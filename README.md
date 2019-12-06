@@ -23,7 +23,7 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@master
       - name: 'Kustomize Build'
-        uses: karancode/kustomize-github-actions@master
+        uses: karancode/kustomize-github-action@master
         with:
           kustomize_version: '3.0.0'
           kustomize_build_dir: '.'
