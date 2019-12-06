@@ -16,7 +16,7 @@ function kustomize_build {
     fi
 
     # exit code !0 - failure
-    if [ ${build_exit_code} -ne 1 ]; then
+    if [ ${build_exit_code} -ne 0 ]; then
         build_comment_status="Failed"
         echo "build: error: failed to execute kustomize build in ${kustomize_build_dir}."
         echo "${build_output}"
@@ -25,7 +25,7 @@ function kustomize_build {
 
     # comment
     if [ "${GITHUB_EVENT_NAME}" == "pull_request" ] && [ "${kustomize_comment}" == "1" ]; then
-        build_comment_wrapper="####\`kustomize build\` ${build_comment_status}
+        build_comment_wrapper="#### \`kustomize build\` ${build_comment_status}
 <details><summary>Show Output</summary>
 
 \`\`\`
