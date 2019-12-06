@@ -24,7 +24,7 @@ function kustomize_build {
     fi
 
     # comment
-    if [ "${GITHUB_EVENT_NAME}" == "pull_request" ] && ([ "${kustomize_comment}" == "1" || "${kustomize_comment}" == "true" ]); then
+    if [ "${GITHUB_EVENT_NAME}" == "pull_request" ] && ([ "${kustomize_comment}" == "1" ] || [ "${kustomize_comment}" == "true" ]); then
         build_comment_wrapper="####\`kustomize build\` ${build_comment_status}
 <details><summary>Show Output</summary>
 
