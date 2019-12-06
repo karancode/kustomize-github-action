@@ -11,12 +11,12 @@ function parse_inputs {
 
     # optional inputs
     kustomize_build_dir="."
-    if [ "${INPUT_KUSTOMIZE_BUILD_DIR}" != "" || "${INPUT_KUSTOMIZE_BUILD_DIR}" != "." ]; then
+    if [ "${INPUT_KUSTOMIZE_BUILD_DIR}" != "" ] || [ "${INPUT_KUSTOMIZE_BUILD_DIR}" != "." ]; then
         kustomize_build_dir=${INPUT_KUSTOMIZE_BUILD_DIR}
     fi
 
     kustomize_comment=0
-    if [ "${INPUT_KUSTOMIZE_COMMENT}" == "1" ||  "${INPUT_KUSTOMIZE_COMMENT}" == "true" ]; then
+    if [ "${INPUT_KUSTOMIZE_COMMENT}" == "1" ] || [ "${INPUT_KUSTOMIZE_COMMENT}" == "true" ]; then
         kustomize_comment=1
     fi
 }
