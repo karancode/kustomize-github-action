@@ -49,7 +49,7 @@ function main {
     parse_inputs
 
     install_kustomize
-    kustomize_build ${*}
+    kustomize_build
     
 }
 
