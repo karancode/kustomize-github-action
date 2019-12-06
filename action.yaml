@@ -1,0 +1,26 @@
+# action.yaml
+name: 'Kustomize Github Action'
+author: 'karancode <karanthanvi0@gmail.com>'
+description: 'Github action for kustomize - manily to perform kustomize build for the k8s config yamls'
+branding:
+  icon: 'anchor'
+  color: 'blue'
+inputs:
+  kustomize_version:
+    description: 'Kustomize version'
+    required: true
+    default: '3.0.0'
+  kustomize_build_dir:
+    description: 'Directory to do kustomize build on'
+    required: false
+    default: '.'
+  kustomize_comment:
+    description: 'Comment kustomize output'
+    required: false
+    default: '0'
+outputs:
+  kustomize_build_output:
+    description: 'Output of kustomize build'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
