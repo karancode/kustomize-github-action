@@ -16,7 +16,7 @@ function kustomize_build {
     fi
 
     # exit code !0 - failure
-    if [ ${build_exit_code} -ne 1 ]; then
+    if [ ${build_exit_code} -ne 0 ]; then
         build_comment_status="Failed"
         echo "build: error: failed to execute kustomize build in ${kustomize_build_dir}."
         echo "${build_output}"
