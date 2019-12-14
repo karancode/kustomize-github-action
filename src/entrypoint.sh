@@ -50,6 +50,7 @@ function main {
 
     install_kustomize
     kustomize_build
+    kubeval
     
 }
 
