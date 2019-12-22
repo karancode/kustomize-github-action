@@ -19,6 +19,11 @@ function parse_inputs {
     if [ "${INPUT_KUSTOMIZE_COMMENT}" == "1" ] || [ "${INPUT_KUSTOMIZE_COMMENT}" == "true" ]; then
         kustomize_comment=1
     fi
+
+    kustomize_output_file=""
+    if [ -n "${INPUT_KUSTOMIZE_OUTPUT_FILE}" ]; then
+      kustomize_output_file=${INPUT_KUSTOMIZE_OUTPUT_FILE}
+    fi
 }
 
 function install_kustomize {
@@ -31,7 +36,7 @@ function install_kustomize {
         exit 1
     fi
     echo "Successfully downloaded kustomize v${kustomize_version}."
-    
+
     echo "Allowing execute privilege to kustomize."
     chmod +x /usr/bin/kustomize
     if [ "${?}" -ne 0 ]; then
@@ -50,7 +55,7 @@ function main {
 
     install_kustomize
     kustomize_build
-    
+
 }
 
 main "${*}"
