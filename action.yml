@@ -19,7 +19,7 @@ inputs:
     required: false
     default: '0'
   kustomize_output_file:
-    description: 'Path to to file to write the kustomize build output to'
+    description: 'Path to file to write the kustomize build output to'
     required: false
     default: ''
 outputs:
