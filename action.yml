@@ -18,6 +18,10 @@ inputs:
     description: 'Comment kustomize output'
     required: false
     default: '0'
+  kustomize_output_file:
+    description: 'Path to file to write the kustomize build output to'
+    required: false
+    default: ''
 outputs:
   kustomize_build_output:
     description: 'Output of kustomize build'

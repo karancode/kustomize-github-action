@@ -10,7 +10,7 @@ Kustomize GitHub Actions is a single GitHub Action that can be executed on diffe
 An exit code of `0` is considered a successful execution.
 
 ## Usage
-The most common usage is to run `kustomize build` on an overlays directory, where one overlays directory represents k8s configs for one environment. A comment will be posted to the pull request depending on the output of the Kustomize build command being executed. This workflow can be configured by adding the following content to the GitHub Actions workflow YAML file. 
+The most common usage is to run `kustomize build` on an overlays directory, where one overlays directory represents k8s configs for one environment. A comment will be posted to the pull request depending on the output of the Kustomize build command being executed. This workflow can be configured by adding the following content to the GitHub Actions workflow YAML file.
 ```yaml
 name: 'Kustomize GitHub Actions'
 on:
@@ -28,10 +28,11 @@ jobs:
           kustomize_version: '3.0.0'
           kustomize_build_dir: '.'
           kustomize_comment: true
+          kustomize_build_output: "gitops/rendered.yaml"
         env:
           GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
 ```
-This was a simplified example showing the basic features of these Kustomize rraform GitHub Actions. More examples, coming soon!
+This was a simplified example showing the basic features of these Kustomize GitHub Action. More examples, coming soon!
 
 # Inputs
 
@@ -40,7 +41,7 @@ Inputs configure Kustomize GitHub Actions to perform build action.
 * `kustomize_version` - (Required) The Kustomize version to use for `kustomize build`.
 * `kustomize_build_dir` - (Optional) The directory to run `kustomize build` on (assumes that the directory contains a kustomization yaml file). Defaults to `.`.
 * `kustomize_comment` - (Optional) Whether or not to comment on GitHub pull requests. Defaults to `false`.
-
+* `kustomize_output_file` - (Optional) Path to to file to write the kustomize build output t.
 
 ## Outputs
 
