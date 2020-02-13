@@ -28,7 +28,7 @@ jobs:
           kustomize_version: '3.0.0'
           kustomize_build_dir: '.'
           kustomize_comment: true
-          kustomize_build_output: "gitops/rendered.yaml"
+          kustomize_output_file: "gitops/rendered.yaml"
         env:
           GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
 ```
