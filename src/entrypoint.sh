@@ -25,8 +25,8 @@ function parse_inputs {
       kustomize_output_file=${INPUT_KUSTOMIZE_OUTPUT_FILE}
     fi
 
-    enable_alpha_plugins=false
-    if [ "${enable_alpha_plugins}" == "true" ]; then
+    enable_alpha_plugins=0
+   if [ "${enable_alpha_plugins}" == "1" ] || [ "${enable_alpha_plugins}" == "true" ]; then
        enable_alpha_plugins=${enable_alpha_plugins}
     fi
 }

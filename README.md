@@ -29,6 +29,7 @@ jobs:
           kustomize_build_dir: '.'
           kustomize_comment: true
           kustomize_output_file: "gitops/rendered.yaml"
+          enable_alpha_plugins: true
         env:
           GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
 ```
@@ -42,6 +43,7 @@ Inputs configure Kustomize GitHub Actions to perform build action.
 * `kustomize_build_dir` - (Optional) The directory to run `kustomize build` on (assumes that the directory contains a kustomization yaml file). Defaults to `.`.
 * `kustomize_comment` - (Optional) Whether or not to comment on GitHub pull requests. Defaults to `false`.
 * `kustomize_output_file` - (Optional) Path to to file to write the kustomize build output t.
+* `enable_alpha_plugins` - (Optional) Enable Kustomize plugins. Defaults to `false`.
 
 ## Outputs
 

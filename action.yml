@@ -25,7 +25,7 @@ inputs:
   enable_alpha_plugins:
     description: 'Enable Kustomize plugins'
     required: false
-    default: ''
+    default: '0'
 outputs:
   kustomize_build_output:
     description: 'Output of kustomize build'
