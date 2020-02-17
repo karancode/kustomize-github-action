@@ -26,8 +26,8 @@ function parse_inputs {
     fi
 
     enable_alpha_plugins=0
-   if [ "${enable_alpha_plugins}" == "1" ] || [ "${enable_alpha_plugins}" == "true" ]; then
-       enable_alpha_plugins=${enable_alpha_plugins}
+   if [ "${INPUT_ENABLE_ALPHA_PLUGINS}" == "1" ] || [ "${INPUT_ENABLE_ALPHA_PLUGINS}" == "true" ]; then
+       enable_alpha_plugins=${INPUT_ENABLE_ALPHA_PLUGINS}
     fi
 }
 
