@@ -24,6 +24,11 @@ function parse_inputs {
     if [ -n "${INPUT_KUSTOMIZE_OUTPUT_FILE}" ]; then
       kustomize_output_file=${INPUT_KUSTOMIZE_OUTPUT_FILE}
     fi
+
+    enable_alpha_plugins=""
+   if [ "${INPUT_ENABLE_ALPHA_PLUGINS}" == "1" ] || [ "${INPUT_ENABLE_ALPHA_PLUGINS}" == "true" ]; then
+       enable_alpha_plugins="--enable_alpha_plugins"
+    fi
 }
 
 function install_kustomize {
