@@ -4,11 +4,7 @@ function kustomize_build {
     # gather output
     echo "build: info: kustomize build in directory ${kustomize_build_dir}."
     
-    if [ "${enable_alpha_plugins}" == "1" ] || [ "${enable_alpha_plugins}" == "true" ]; then
-        build_output=$(kustomize build --enable_alpha_plugins ${kustomize_build_dir} 2>&1)
-    else 
-        build_output=$(kustomize build ${kustomize_build_dir} 2>&1)
-    fi
+    build_output=$(kustomize build ${enable_alpha_plugins} ${kustomize_build_dir} 2>&1)
     
     build_exit_code=${?}
 
