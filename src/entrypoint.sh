@@ -32,10 +32,14 @@ function parse_inputs {
 }
 
 function install_kustomize {
-    url="https://github.com/kubernetes-sigs/kustomize/releases/download/v${kustomize_version}/kustomize_${kustomize_version}_linux_amd64"
+    url=$(curl -s "https://api.github.com/repos/kubernetes-sigs/kustomize/releases?per_page=100" | jq -r '.[].assets[] | select(.browser_download_url | test("kustomize_(v)?'$kustomize_version'_linux_amd64")) | .browser_download_url')
 
     echo "Downloading kustomize v${kustomize_version}"
-    curl -s -S -L ${url} -o /usr/bin/kustomize
+    if [[ "${url}" =~ .tar.gz$ ]]; then
+      curl -s -S -L ${url} | tar -xz -C /usr/bin
+    else
+      curl -s -S -L ${url} -o /usr/bin/kustomize
+    fi
     if [ "${?}" -ne 0 ]; then
         echo "Failed to download kustomize v${kustomize_version}."
         exit 1
