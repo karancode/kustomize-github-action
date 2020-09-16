@@ -29,6 +29,7 @@ jobs:
           kustomize_build_dir: '.'
           kustomize_comment: true
           kustomize_output_file: "gitops/rendered.yaml"
+          kustomize_build_options: "--load_restrictor none"
           enable_alpha_plugins: true
         env:
           GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
@@ -43,6 +44,7 @@ Inputs configure Kustomize GitHub Actions to perform build action.
 * `kustomize_build_dir` - (Optional) The directory to run `kustomize build` on (assumes that the directory contains a kustomization yaml file). Defaults to `.`.
 * `kustomize_comment` - (Optional) Whether or not to comment on GitHub pull requests. Defaults to `false`.
 * `kustomize_output_file` - (Optional) Path to to file to write the kustomize build output t.
+* `kustomize_build_options` - (Optional) Provide build options to kustomize build.
 * `enable_alpha_plugins` - (Optional) Enable Kustomize plugins. Defaults to `false`.
 
 ## Outputs
@@ -56,4 +58,3 @@ Outputs are used to pass information to subsequent GitHub Actions steps.
 Secrets are similar to inputs except that they are encrypted and only used by GitHub Actions. It's a convenient way to keep sensitive data out of the GitHub Actions workflow YAML file.
 
 * `GITHUB_ACCESS_TOKEN` - (Optional) The GitHub API token used to post comments to pull requests. Not required if the `kustomize_comment` input is set to `false`.
-
