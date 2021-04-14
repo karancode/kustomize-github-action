@@ -37,7 +37,12 @@ function parse_inputs {
 }
 
 function install_kustomize {
-    url=$(curl -s "https://api.github.com/repos/kubernetes-sigs/kustomize/releases?per_page=100" | jq -r '.[].assets[] | select(.browser_download_url | test("kustomize(_|.)?(v)?'$kustomize_version'_linux_amd64")) | .browser_download_url')
+
+    # hack to support older version
+    url=$(curl -s "https://api.github.com/repos/kubernetes-sigs/kustomize/releases?per_page=100&page=1" | jq -r '.[].assets[] | select(.browser_download_url | test("kustomize(_|.)?(v)?'$kustomize_version'_linux_amd64")) | .browser_download_url')
+    if [ -z "${url}" ]; then
+        url=$(curl -s "https://api.github.com/repos/kubernetes-sigs/kustomize/releases?per_page=100&page=2" | jq -r '.[].assets[] | select(.browser_download_url | test("kustomize(_|.)?(v)?'$kustomize_version'_linux_amd64")) | .browser_download_url')
+    fi
 
     echo "Downloading kustomize v${kustomize_version}"
     if [[ "${url}" =~ .tar.gz$ ]]; then
