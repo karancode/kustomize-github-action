@@ -25,7 +25,7 @@ function kustomize_build {
     fi
 
     # write output to file
-    if [ -n ${kustomize_output_file} ]; then
+    if [ -n "${kustomize_output_file}" ]; then
       echo "build: writing output to ${kustomize_output_file}"
       cat > "${kustomize_output_file}" <<EOF
 ${build_output}
