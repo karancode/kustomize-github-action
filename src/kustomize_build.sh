@@ -26,6 +26,11 @@ function kustomize_build {
 
     # write output to file
     if [ -n "${kustomize_output_file}" ]; then
+      # create parent directory if it doesn't exist
+      dir=$(dirname "${kustomize_output_file}")
+      if [ ! -d "${dir}" ]; then
+        mkdir -p "${dir}"
+      fi
       echo "build: writing output to ${kustomize_output_file}"
       cat > "${kustomize_output_file}" <<EOF
 ${build_output}
