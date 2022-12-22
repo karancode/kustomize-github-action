@@ -10,6 +10,9 @@ inputs:
     description: 'Kustomize version'
     required: true
     default: '3.0.0'
+  kustomize_install:
+    required: false
+    default: '1'
   kustomize_build_dir:
     description: 'Directory to do kustomize build on'
     required: false
