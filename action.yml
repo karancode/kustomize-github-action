@@ -11,7 +11,7 @@ inputs:
     required: true
     default: '3.0.0'
   kustomize_install:
-    description: "Unknown"
+    description: "whether to install kustomize or use already installed"
     required: false
     default: '1'
   kustomize_build_dir:
