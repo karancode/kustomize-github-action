@@ -36,8 +36,13 @@ function parse_inputs {
     fi
 
     enable_alpha_plugins=""
-   if [ "${INPUT_ENABLE_ALPHA_PLUGINS}" == "1" ] || [ "${INPUT_ENABLE_ALPHA_PLUGINS}" == "true" ]; then
+    if [ "${INPUT_ENABLE_ALPHA_PLUGINS}" == "1" ] || [ "${INPUT_ENABLE_ALPHA_PLUGINS}" == "true" ]; then
        enable_alpha_plugins="--enable_alpha_plugins"
+    fi
+
+    with_token=""
+    if [ "${INPUT_TOKEN}" != "" ]; then
+       with_token=(-H "Authorization: token ${INPUT_TOKEN}")
     fi
 }
 
@@ -46,7 +51,7 @@ function install_kustomize {
     echo "getting download url for kustomize ${kustomize_version}"
 
     for i in {1..100}; do
-      url=$(curl --retry-all-errors --fail --retry 30 --retry-max-time 120 -s "https://api.github.com/repos/kubernetes-sigs/kustomize/releases?per_page=100&page=$i" | jq -r '.[].assets[] | select(.browser_download_url | test("kustomize(_|.)?(v)?'$kustomize_version'_linux_amd64"))  | .browser_download_url')
+      url=$(curl --retry-all-errors --fail --retry 30 --retry-max-time 120 "${with_token[@]}" -s "https://api.github.com/repos/kubernetes-sigs/kustomize/releases?per_page=100&page=$i" | jq -r '.[].assets[] | select(.browser_download_url | test("kustomize(_|.)?(v)?'$kustomize_version'_linux_amd64"))  | .browser_download_url')
       if [ ! -z $url ]; then
         break
       fi

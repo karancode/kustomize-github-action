@@ -11,6 +11,7 @@ inputs:
     required: true
     default: '3.0.0'
   kustomize_install:
+    description: "Unknown"
     required: false
     default: '1'
   kustomize_build_dir:
@@ -33,6 +34,10 @@ inputs:
     description: 'Enable Kustomize plugins'
     required: false
     default: '0'
+  token:
+    description: 'GitHub Token for Authentication to Github API (mainly for limit avoidance)'
+    required: false
+    default: ''
 outputs:
   kustomize_build_output:
     description: 'Output of kustomize build'
