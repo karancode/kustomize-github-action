@@ -56,6 +56,6 @@ ${build_output}
         echo "${build_payload}" | curl -s -S -H "Authorization: token ${GITHUB_ACCESS_TOKEN}" --header "Content-Type: application/json" --data @- "${build_comment_url}" > /dev/null
     fi
 
-    echo ::set-output name=kustomize_build_output::${build_output}
+    echo kustomize_build_output=${build_output} >> $GITHUB_OUTPUT
     exit ${build_exit_code}
 }
